@@ -35,9 +35,9 @@
 				"Variable2": {
 					"type": "input",
 					"top": 58,
-					"left": 112,
+					"left": 130,
 					"width": 307,
-					"height": 16,
+					"height": 17,
 					"dataSource": "Form:C1466.microsoftEmailAddress",
 					"dragging": "none",
 					"dropping": "custom",
@@ -50,10 +50,11 @@
 				"Texte3": {
 					"type": "text",
 					"top": 59,
-					"left": 21,
-					"width": 138,
-					"height": 15,
-					"text": "Email address:"
+					"left": 22,
+					"width": 98,
+					"height": 16,
+					"text": "Email address:",
+					"textAlign": "right"
 				}
 			}
 		},
@@ -187,7 +188,7 @@
 			}
 		}
 	],
-	"geometryStamp": 62,
+	"geometryStamp": 77,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

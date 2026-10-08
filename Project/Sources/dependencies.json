@@ -9,8 +9,8 @@
 			"github": "4d/4D-ViewPro",
 			"version": "4d"
 		},
-		"DateTimeComponent 4D": {
-			"github": "fabrice-mainguene/DateTimeComponent-4D",
+		"DateTime 4D": {
+			"github": "miyako/DateTime-4D",
 			"version": "latest"
 		}
 	}
