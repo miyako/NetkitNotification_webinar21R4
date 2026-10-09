@@ -1,6 +1,5 @@
 ---
 description: "Rules for converting synchronous AI Kit code to asynchronous implementations — streaming support, display responses token-by-token as they arrive in text input or web area"
-applyTo: "demo/**/*.4dm,demo/**/*.4DForm"
 ---
 
 # 4D AI Kit Asynchronous Callbacks — Agent Instructions

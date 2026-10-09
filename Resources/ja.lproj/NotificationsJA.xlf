@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file datatype="plaintext" original="NotificationsJA.xlf" source-language="en" target-language="ja">
+		<body>
+			<trans-unit id="Notifications_WindowTitle" resname="Notifications_WindowTitle">
+				<source>Notifications</source>
+				<target>通知</target>
+			</trans-unit>
+			<trans-unit id="Notifications_EmailAddress" resname="Notifications_EmailAddress">
+				<source>Email address:</source>
+				<target>メールアドレス：</target>
+			</trans-unit>
+			<trans-unit id="Notifications_SignIn" resname="Notifications_SignIn">
+				<source>Sign In</source>
+				<target>サインイン</target>
+			</trans-unit>
+			<trans-unit id="Notifications_HeaderStatus" resname="Notifications_HeaderStatus">
+				<source>Status</source>
+				<target>状態</target>
+			</trans-unit>
+			<trans-unit id="Notifications_HeaderSender" resname="Notifications_HeaderSender">
+				<source>From</source>
+				<target>差出人</target>
+			</trans-unit>
+			<trans-unit id="Notifications_HeaderSubject" resname="Notifications_HeaderSubject">
+				<source>Subject</source>
+				<target>件名</target>
+			</trans-unit>
+			<trans-unit id="Notifications_HeaderDate" resname="Notifications_HeaderDate">
+				<source>Date</source>
+				<target>日付</target>
+			</trans-unit>
+			<trans-unit id="Notifications_TabMail" resname="Notifications_TabMail">
+				<source>Mail Notifications</source>
+				<target>メール通知</target>
+			</trans-unit>
+			<trans-unit id="Notifications_TabCalendar" resname="Notifications_TabCalendar">
+				<source>Calendar Notifications</source>
+				<target>カレンダー通知</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

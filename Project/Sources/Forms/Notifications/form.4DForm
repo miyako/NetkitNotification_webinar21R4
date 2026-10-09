@@ -15,7 +15,7 @@
 		"onLoad",
 		"onUnload"
 	],
-	"windowTitle": "Notifications",
+	"windowTitle": ":xliff:Notifications_WindowTitle",
 	"destination": "detailScreen",
 	"pages": [
 		{
@@ -40,6 +40,7 @@
 					"width": 307,
 					"height": 17,
 					"dataSource": "Form:C1466.microsoftEmailAddress",
+					"class": "field",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -54,12 +55,13 @@
 					"left": 22,
 					"width": 98,
 					"height": 16,
-					"text": "Email address:",
-					"textAlign": "right"
+					"text": ":xliff:Notifications_EmailAddress",
+					"textAlign": "right",
+					"class": "label"
 				},
 				"MIcrosoftConnectBt": {
 					"type": "button",
-					"text": "Sign In",
+					"text": ":xliff:Notifications_SignIn",
 					"top": 39,
 					"left": 690,
 					"width": 110,
@@ -108,7 +110,7 @@
 					"selectedItemsSource": "Form:C1466.selectedEmails",
 					"rowHeight": "1em",
 					"headerHeight": "1em",
-					"alternateBackground": "#F9F9F9",
+					"class": "mail-list",
 					"hideFocusRing": true,
 					"hideExtraBlankRows": true,
 					"resizingMode": "legacy",
@@ -120,11 +122,11 @@
 					"columns": [
 						{
 							"header": {
-								"text": "Status",
+								"text": ":xliff:Notifications_HeaderStatus",
 								"name": "HeaderStatus"
 							},
 							"name": "ColStatus",
-							"dataSource": "This:C1470.type",
+							"dataSource": "Localized string(\"MailStatus_\"+String(This:C1470.type))",
 							"width": 80,
 							"truncateMode": "withEllipsis",
 							"footer": {
@@ -135,7 +137,7 @@
 						},
 						{
 							"header": {
-								"text": "From",
+								"text": ":xliff:Notifications_HeaderSender",
 								"name": "HeaderSender"
 							},
 							"name": "ColSender",
@@ -149,7 +151,7 @@
 						},
 						{
 							"header": {
-								"text": "Subject",
+								"text": ":xliff:Notifications_HeaderSubject",
 								"name": "HeaderSubject"
 							},
 							"name": "ColSubject",
@@ -163,7 +165,7 @@
 						},
 						{
 							"header": {
-								"text": "Date",
+								"text": ":xliff:Notifications_HeaderDate",
 								"name": "HeaderDate"
 							},
 							"name": "ColDate",

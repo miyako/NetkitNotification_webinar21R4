@@ -1,6 +1,5 @@
 ---
 description: "Rules for 4D listbox display defaults — disabling truncate-with-ellipsis and enforcing legacy column resizing"
-applyTo: "demo/**/*.4DForm"
 ---
 
 # 4D Listbox Display Defaults — Agent Rules

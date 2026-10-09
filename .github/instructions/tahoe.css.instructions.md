@@ -1,6 +1,5 @@
 ---
 description: "Rules for adapting 4D form buttons and controls to macOS Tahoe Liquid Glass appearance using CSS form-theme media queries, height thresholds, and stylesheet specificity"
-applyTo: "demo/**/*.css,demo/**/*.4DForm"
 ---
 
 # 4D Liquid Glass & Form Theme CSS — Agent Rules

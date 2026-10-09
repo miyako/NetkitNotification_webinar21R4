@@ -2,7 +2,7 @@
 #DECLARE($params : Object)
 
 var $windowTitle : Text
-$windowTitle:="Notifications"
+$windowTitle:=Localized string("Notifications_WindowTitle")
 
 var $window : Integer
 
