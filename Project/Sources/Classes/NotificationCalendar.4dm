@@ -35,31 +35,32 @@ Function getCalendarObjects() : Collection
 	
 Function onCreate($provider : Object; $event : Object)
 	
+	var $id : Text
+	var $events:=[]
+	var $myEvent : Object
+	
+	// Batch fetch all new event details from Office365
+	For each ($id; $event.ids)
+		// Request full event data with timezone applied to start/end times
+		$myEvent:=This:C1470.office365.calendar.getEvent({eventId: $id; timeZone: This:C1470.currentTimeZone.MicrosoftTimeZone})
+		
+		// Only add successfully retrieved events to collection
+		If ($myEvent#Null:C1517)
+			$events.push($myEvent)
+		End if 
+	End for each 
+	
+	If ($events.length=0)
+		return 
+	End if 
+	
 	var $objects : Collection
 	var $object : Text
 	$objects:=This:C1470.getCalendarObjects()
 	For each ($object; $objects)
-		var $id : Text
-		var $item : Object
 		var $calendar:=cs:C1710.CalendarDisplay.new($object)
-		var $events:=[]
-		var $myEvent : Object
-		
-		// Batch fetch all new event details from Office365
-		For each ($id; $event.ids)
-			// Request full event data with timezone applied to start/end times
-			$myEvent:=This:C1470.office365.calendar.getEvent({eventId: $id; timeZone: This:C1470.currentTimeZone.MicrosoftTimeZone})
-			
-			// Only add successfully retrieved events to collection
-			If ($myEvent#Null:C1517)
-				$events.push($myEvent)
-			End if 
-		End for each 
-		
 		// Render all fetched events in single calendar update
-		If ($events.length>0)
-			$calendar.displayCalendar($events)
-		End if 
+		$calendar.displayCalendar($events)
 	End for each 
 	
 	// Removes calendar events reported as deleted.
@@ -71,7 +72,7 @@ Function onDelete($provider : Object; $event : Object)
 	$objects:=This:C1470.getCalendarObjects()
 	For each ($object; $objects)
 		var $id : Text
-		var $calendar:=cs:C1710.CalendarDisplay.new()
+		var $calendar:=cs:C1710.CalendarDisplay.new($object)
 		
 		// Remove all events reported as deleted from the display
 		For each ($id; $event.ids)
@@ -85,25 +86,34 @@ Function onDelete($provider : Object; $event : Object)
 	// Requests full event data with timezone conversion and updates shape if event found.
 Function onModify($provider : Object; $event : Object)
 	
+	var $id : Text
+	var $events:=[]
+	var $myEvent : Object
+	
+	// Batch fetch all modified event details from Office365
+	For each ($id; $event.ids)
+		// Request full event data with timezone applied
+		$myEvent:=This:C1470.office365.calendar.getEvent({eventId: $id; timeZone: This:C1470.currentTimeZone.MicrosoftTimeZone})
+		
+		// Keep only events retrieved successfully
+		If ($myEvent#Null:C1517)
+			$events.push({id: $id; event: $myEvent})
+		End if 
+	End for each 
+	
+	If ($events.length=0)
+		return 
+	End if 
+	
 	var $objects : Collection
 	var $object : Text
+	var $modified : Object
 	$objects:=This:C1470.getCalendarObjects()
 	For each ($object; $objects)
-		var $item : Object
-		var $id : Text
-		var $calendar:=cs:C1710.CalendarDisplay.new()
-		var $myEvent : Object
-		
-		// Batch fetch and update all modified events
-		For each ($id; $event.ids)
-			// Request full event data with timezone applied
-			$myEvent:=This:C1470.office365.calendar.getEvent({eventId: $id; timeZone: This:C1470.currentTimeZone.MicrosoftTimeZone})
-			
-			// Update the shape if event data retrieved successfully
-			If ($myEvent#Null:C1517)
-				$calendar.updateEvent($id; $myEvent)
-			End if 
-			
+		var $calendar:=cs:C1710.CalendarDisplay.new($object)
+		// Update the shape of each modified event
+		For each ($modified; $events)
+			$calendar.updateEvent($modified.id; $modified.event)
 		End for each 
 	End for each 
 	
