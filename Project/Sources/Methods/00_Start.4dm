@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {}
 #DECLARE($params : Object)
 
 var $windowTitle : Text

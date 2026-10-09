@@ -1,11 +1,15 @@
 If (SignIn("Microsoft"))
 	
+	If (Form:C1466.vpReady) && (Form:C1466.calendar=Null:C1517)
+		Form:C1466.calendar:=cs:C1710.Form_Calendar.new()
+		OBJECT SET VISIBLE:C603(*; "ViewProArea"; True:C214)
+	End if 
+	
 	// Create a new Microsoft 365 provider instance.
 	var $office365:=cs:C1710.NetKit.Office365.new(cs:C1710.OfficeProvider.me.OAuth2)
 	
 	// Create a notification listener instance.
 	var $NotificationMail:=cs:C1710.NotificationMail.new($office365)
-	
 	
 	// Create and start a mail notifier.
 	// The notifier subscribes to mail changes and automatically

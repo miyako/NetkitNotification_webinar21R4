@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 #DECLARE($providerName : Text) : Boolean
 
 var $providerClass : 4D:C1709.Class

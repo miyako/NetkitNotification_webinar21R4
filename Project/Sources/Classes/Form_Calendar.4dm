@@ -9,13 +9,7 @@ property _calendarDisplay : Object
 Class constructor
 	This:C1470._calendarDisplay:=cs:C1710.CalendarDisplay.new(This:C1470._VPArea)
 	
-	// Imports the calendar template when the View Pro area is ready.
-Function viewProEvent()
-	If (FORM Event:C1606.code=On VP Ready:K2:59)
-		
-		VP IMPORT DOCUMENT(This:C1470._VPArea; This:C1470._FilePath; {formula: Formula:C1597(Form:C1466.calendar.initCalendar())})
-		
-	End if 
+	VP IMPORT DOCUMENT(This:C1470._VPArea; This:C1470._FilePath; {formula: This:C1470.initCalendar})
 	
 	// Displays the supplied events in the calendar.
 Function displayCalendar($events : Collection)
@@ -23,4 +17,8 @@ Function displayCalendar($events : Collection)
 	
 	// Initializes the calendar grid and current-day indicators.
 Function initCalendar()
-	This:C1470._calendarDisplay.initCalendar()
+	
+	var $this : cs:C1710.Form_Calendar
+	$this:=Form:C1466.calendar
+	
+	$this._calendarDisplay.initCalendar()

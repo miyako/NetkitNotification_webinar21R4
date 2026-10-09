@@ -3,16 +3,17 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"windowSizingX": "variable",
-	"windowSizingY": "variable",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
 	"windowMinWidth": 0,
 	"windowMinHeight": 0,
 	"windowMaxWidth": 32767,
 	"windowMaxHeight": 32767,
-	"rightMargin": 20,
-	"bottomMargin": 20,
+	"rightMargin": 10,
+	"bottomMargin": 10,
 	"events": [
-		"onLoad"
+		"onLoad",
+		"onUnload"
 	],
 	"windowTitle": "Notifications",
 	"destination": "detailScreen",
@@ -55,6 +56,40 @@
 					"height": 16,
 					"text": "Email address:",
 					"textAlign": "right"
+				},
+				"MIcrosoftConnectBt": {
+					"type": "button",
+					"text": "Sign In",
+					"top": 39,
+					"left": 590,
+					"width": 110,
+					"height": 54,
+					"events": [
+						"onClick"
+					],
+					"style": "regular",
+					"icon": "/RESOURCES/Microsoft.png",
+					"textPlacement": "bottom",
+					"imageHugsTitle": true,
+					"method": "ObjectMethods/MIcrosoftConnectBt.4dm",
+					"sizingX": "move"
+				},
+				"MIcrosoftInboxBt": {
+					"type": "button",
+					"text": "Inbox",
+					"top": 39,
+					"left": 710,
+					"width": 110,
+					"height": 54,
+					"events": [
+						"onClick"
+					],
+					"style": "regular",
+					"icon": "/RESOURCES/Microsoft.png",
+					"textPlacement": "bottom",
+					"imageHugsTitle": true,
+					"method": "ObjectMethods/MIcrosoftInboxBt.4dm",
+					"sizingX": "move"
 				}
 			}
 		},
@@ -72,7 +107,7 @@
 					"currentItemSource": "Form:C1466.currentEmail",
 					"selectedItemsSource": "Form:C1466.selectedEmails",
 					"rowHeight": "1em",
-					"headerHeight": "32px",
+					"headerHeight": "1em",
 					"alternateBackground": "#F9F9F9",
 					"hideFocusRing": true,
 					"hideExtraBlankRows": true,
@@ -141,38 +176,6 @@
 							"enterable": false
 						}
 					]
-				},
-				"MIcrosoftConnectBt": {
-					"type": "button",
-					"text": "Sign In",
-					"top": 39,
-					"left": 590,
-					"width": 110,
-					"height": 54,
-					"events": [
-						"onClick"
-					],
-					"style": "regular",
-					"icon": "/RESOURCES/Microsoft.png",
-					"textPlacement": "bottom",
-					"imageHugsTitle": true,
-					"method": "ObjectMethods/MIcrosoftConnectBt.4dm"
-				},
-				"MIcrosoftInboxBt": {
-					"type": "button",
-					"text": "Inbox",
-					"top": 39,
-					"left": 710,
-					"width": 110,
-					"height": 54,
-					"events": [
-						"onClick"
-					],
-					"style": "regular",
-					"icon": "/RESOURCES/Microsoft.png",
-					"textPlacement": "bottom",
-					"imageHugsTitle": true,
-					"method": "ObjectMethods/MIcrosoftInboxBt.4dm"
 				}
 			}
 		},
@@ -180,22 +183,25 @@
 			"objects": {
 				"ViewProArea": {
 					"type": "view",
-					"left": 21,
-					"top": 106,
-					"width": 1080,
-					"height": 555,
+					"left": 20,
+					"top": 100,
+					"width": 800,
+					"height": 400,
 					"userInterface": "none",
 					"withFormulaBar": false,
 					"method": "ObjectMethods/ViewProArea.4dm",
 					"events": [
 						"onVPReady",
 						"onDoubleClick"
-					]
+					],
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"visibility": "hidden"
 				}
 			}
 		}
 	],
-	"geometryStamp": 143,
+	"geometryStamp": 158,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

@@ -8,11 +8,6 @@
 	},
 	"Default Forms": {},
 	"Default Project Methods": {},
-	"Default Tables": {
-		"forms": [
-			"[]Input",
-			"[]Output"
-		]
-	},
+	"Default Tables": {},
 	"trash": {}
 }

@@ -19,7 +19,7 @@ Function onCreate($provider : Object; $event : Object)
 		$item:=This:C1470.office365.mail.getMail($id)
 		
 		// Prepend new mail to form collection with metadata and new-mail indicator
-		Form:C1466.emails.shift({type: $event.type; sender: $item.sender; subject: $item.subject; id: String:C10($id); sentDateTime: $item.sentDateTime; rowColor: "Green"})
+		Form:C1466.emails.unshift({type: $event.type; sender: $item.sender; subject: $item.subject; id: String:C10($id); sentDateTime: $item.sentDateTime; rowColor: "Green"})
 		
 	End for each 
 	
