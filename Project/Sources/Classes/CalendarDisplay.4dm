@@ -96,7 +96,14 @@ Function initCalendar($VPArea : Text)
 	$data.friday:=Day of:C23($date+5)
 	$data.saturday:=Day of:C23($date+6)
 	
+	var $dayNames:=[]
+	var $dayKey : Text
+	For each ($dayKey; ["Sunday"; "Monday"; "Tuesday"; "Wednesday"; "Thursday"; "Friday"; "Saturday"])
+		$dayNames.push(Localized string("Calendar_"+$dayKey))
+	End for each 
+	
 	Try
+		VP SET VALUES(VP Cell($VPArea; 1; 0); [$dayNames])
 		VP SET DATA CONTEXT($VPArea; $data)
 		This:C1470._currentDayColumn:=Day number:C114(Current date:C33)
 		VP SET CELL STYLE(VP Cells(This:C1470._VPArea; This:C1470._currentDayColumn; 0; 1; (This:C1470._timeSlot.length+1)); {backColor: This:C1470._backColorCurrentDate; foreColor: This:C1470._foreColorCurrentDate})

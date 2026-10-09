@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file datatype="plaintext" original="messagesEN.xlf" source-language="en" target-language="en">
+		<body>
+			<trans-unit id="AlertSignInError" resname="AlertSignInError">
+				<source>Sign-in error: unable to obtain authentication token</source>
+				<target>Sign-in error: unable to obtain authentication token</target>
+			</trans-unit>
+			<trans-unit id="MailStatus_mailCreated" resname="MailStatus_mailCreated">
+				<source>New</source>
+				<target>New</target>
+			</trans-unit>
+			<trans-unit id="MailStatus_mailModified" resname="MailStatus_mailModified">
+				<source>Modified</source>
+				<target>Modified</target>
+			</trans-unit>
+			<trans-unit id="Calendar_Sunday" resname="Calendar_Sunday">
+				<source>Sunday</source>
+				<target>Sunday</target>
+			</trans-unit>
+			<trans-unit id="Calendar_Monday" resname="Calendar_Monday">
+				<source>Monday</source>
+				<target>Monday</target>
+			</trans-unit>
+			<trans-unit id="Calendar_Tuesday" resname="Calendar_Tuesday">
+				<source>Tuesday</source>
+				<target>Tuesday</target>
+			</trans-unit>
+			<trans-unit id="Calendar_Wednesday" resname="Calendar_Wednesday">
+				<source>Wednesday</source>
+				<target>Wednesday</target>
+			</trans-unit>
+			<trans-unit id="Calendar_Thursday" resname="Calendar_Thursday">
+				<source>Thursday</source>
+				<target>Thursday</target>
+			</trans-unit>
+			<trans-unit id="Calendar_Friday" resname="Calendar_Friday">
+				<source>Friday</source>
+				<target>Friday</target>
+			</trans-unit>
+			<trans-unit id="Calendar_Saturday" resname="Calendar_Saturday">
+				<source>Saturday</source>
+				<target>Saturday</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

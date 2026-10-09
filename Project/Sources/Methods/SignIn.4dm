@@ -26,6 +26,6 @@ If (($token#Null:C1517) && ($providerClass.me.emailAddress#""))
 	
 	return True:C214
 Else 
-	ALERT:C41("Sign-in error: unable to obtain authentication token")
+	ALERT:C41(Localized string("AlertSignInError"))
 	return False:C215
 End if 
