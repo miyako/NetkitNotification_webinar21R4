@@ -1,5 +1,5 @@
 // Name of the View Pro area used to render the calendar.
-property _VPArea:="ViewProArea"
+property _VPArea : Text
 // Time slots displayed by the calendar.
 property _timeSlot:=[]
 // Column corresponding to the current day.
@@ -82,8 +82,8 @@ Function removeEvent($name : Text)
 	$shape.remove($name)
 	
 	// Initializes the week header, highlights today, and displays the current time.
-Function initCalendar
-	var $VPArea:="ViewProArea"
+Function initCalendar($VPArea : Text)
+	
 	var $period:=WeekDate()
 	var $date:=Date:C102($period.start)
 	
@@ -96,12 +96,15 @@ Function initCalendar
 	$data.friday:=Day of:C23($date+5)
 	$data.saturday:=Day of:C23($date+6)
 	
-	VP SET DATA CONTEXT("ViewProArea"; $data)
-	
-	This:C1470._currentDayColumn:=Day number:C114(Current date:C33)
-	VP SET CELL STYLE(VP Cells(This:C1470._VPArea; This:C1470._currentDayColumn; 0; 1; (This:C1470._timeSlot.length+1)); {backColor: This:C1470._backColorCurrentDate; foreColor: This:C1470._foreColorCurrentDate})
-	
-	This:C1470.displayCurrentTime()
+	Try
+		VP SET DATA CONTEXT($VPArea; $data)
+		This:C1470._currentDayColumn:=Day number:C114(Current date:C33)
+		VP SET CELL STYLE(VP Cells(This:C1470._VPArea; This:C1470._currentDayColumn; 0; 1; (This:C1470._timeSlot.length+1)); {backColor: This:C1470._backColorCurrentDate; foreColor: This:C1470._foreColorCurrentDate})
+		
+		This:C1470.displayCurrentTime()
+	Catch
+		//fail on first run after restart!?
+	End try
 	
 	// Displays the current-time indicator on the calendar.
 Function displayCurrentTime
