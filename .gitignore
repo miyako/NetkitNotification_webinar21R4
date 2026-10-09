@@ -11,3 +11,5 @@ project/DerivedData/*
 logs/*
 
 AIProviders.json
+Credentials/
+

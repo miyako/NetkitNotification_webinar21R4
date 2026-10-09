@@ -9,12 +9,9 @@
 	"Default Forms": {},
 	"Default Project Methods": {},
 	"Default Tables": {
-		"tables": [
-			"INFO"
-		],
 		"forms": [
-			"[INFO]Input",
-			"[INFO]Output"
+			"[]Input",
+			"[]Output"
 		]
 	},
 	"trash": {}

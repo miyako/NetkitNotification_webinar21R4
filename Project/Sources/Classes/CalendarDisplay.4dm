@@ -87,7 +87,8 @@ Function initCalendar
 	var $period:=WeekDate()
 	var $date:=Date:C102($period.start)
 	
-	var $data:={sunday: Day of:C23($date)}
+	var $data : Object
+	$data:={sunday: Day of:C23($date)}
 	$data.monday:=Day of:C23($date+1)
 	$data.tuesday:=Day of:C23($date+2)
 	$data.wednesday:=Day of:C23($date+3)
@@ -116,7 +117,7 @@ Function displayCurrentTime
 	// Algorithm: Binary search through 5-minute time slot intervals.
 	// Finds the slot where currentTime falls between _timeSlot[$i] and _timeSlot[$i+1],
 	// then offsets the result from the first calendar row index.
-	Function searchRow($currentTime : Time) : Integer
+Function searchRow($currentTime : Time) : Integer
 	
 	var $i : Integer
 	var $row:=This:C1470._firstCalendarRow
@@ -129,14 +130,14 @@ Function displayCurrentTime
 			$row+=$i
 			return $row
 		End if 
-		End for 
+	End for 
 	
 	// Default to first calendar row if time not found
 	
 	// Converts an Office 365 event into the format required by the calendar.
 	// Algorithm: Transforms raw event data by extracting dates/times and matching category colors.
 	// Builds display label with formatting: subject + times for timed events, subject-only for all-day.
-	Function _formatEvent($event : Object)
+Function _formatEvent($event : Object)
 	var $categories:=cs:C1710.OfficeProvider.me.categoryColor()
 	
 	// Extract date and time components from ISO datetime strings

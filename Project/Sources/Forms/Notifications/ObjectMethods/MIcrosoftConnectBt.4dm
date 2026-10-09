@@ -1,4 +1,4 @@
-If (SignIn())
+If (SignIn("Microsoft"))
 	
 	// Create a new Microsoft 365 provider instance.
 	var $office365:=cs:C1710.NetKit.Office365.new(cs:C1710.OfficeProvider.me.OAuth2)
