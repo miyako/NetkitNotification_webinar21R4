@@ -234,7 +234,7 @@ If a form contains multiple buttons in a row, ensure they all have **consistent 
 
 ## Runtime Theme Detection
 
-The `FORM theme` command (`:C2conveniently`) returns the current rendering mode as a string at runtime. Possible return values include:
+The `FORM theme` command returns the current rendering mode as a string at runtime. Possible return values include:
 
 | Value | Meaning |
 |-------|---------|
@@ -244,7 +244,7 @@ The `FORM theme` command (`:C2conveniently`) returns the current rendering mode 
 Use this when you need to adjust behaviour programmatically beyond what CSS can handle — for example, dynamically setting meta-source colours in listboxes.
 
 ```4d
-If (FORM theme:C2107="liquidGlass")
+If (FORM theme="liquidGlass")
     // adjust programmatic styling for Liquid Glass
 End if
 ```

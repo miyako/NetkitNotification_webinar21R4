@@ -318,14 +318,14 @@ When choosing dark-mode equivalents, follow these principles:
 1. **Scan forms** for hardcoded `stroke` and `fill` colours across **every** object type, not just shapes — a `text` object's `fill` is its background and is just as easy to leave hardcoded as a rectangle's; check `stroke` and `fill` independently on each object since one can be `"automatic"` while the other is still a fixed hex value. Restrict this to `form.4DForm`/CSS property values, not colour-looking hex codes inside JSON/HTML/rich-text *content* fields (see scope note above).
 2. **Scan forms** for objects that **omit** `fill` or `stroke` entirely — these use an internal default, not `"automatic"`. Add `"fill": "automatic"` or `"stroke": "automatic"` explicitly so they adapt to dark mode. Pay special attention to full-form background rectangles.
 3. **Replace** `#000000`/`#FFFFFF` with `"automatic"` where appropriate.
-3. **Replace** hardcoded `alternateFill` with `"automaticAlternate"`.
-4. **Remove** column-level properties that duplicate listbox-level values.
-5. **Move** branded/specific colours from `.4DForm` to CSS classes with media queries.
-6. **For listboxes with custom odd-row colour**, set class-based `fill` in light/dark CSS and keep `alternateFill: "automaticAlternate"`.
-7. **Add** hidden reference rectangles for any runtime colour logic (meta expressions, programmatic styling). Do not rely on a `.4DForm`-only scan to find these: `grep -rn "rowFillSource\|rowStrokeSource\|rowStyleSource"` across all forms, then `grep -rn` each referenced array/variable name across all `.4dm` files to find every assignment site (there is often more than one, e.g. load-time init plus a refresh/selection-change handler) and confirm none hardcode theme-specific RGB/hex.
-8. **Create** `styleSheets.css` if it doesn't exist; define both `light` and `dark` media query blocks.
-9. **Verify** no inline `.4DForm` property is overriding your CSS (specificity rule).
-10. **Test** by toggling system appearance in System Preferences / Settings.
+4. **Replace** hardcoded `alternateFill` with `"automaticAlternate"`.
+5. **Remove** column-level properties that duplicate listbox-level values.
+6. **Move** branded/specific colours from `.4DForm` to CSS classes with media queries.
+7. **For listboxes with custom odd-row colour**, set class-based `fill` in light/dark CSS and keep `alternateFill: "automaticAlternate"`.
+8. **Add** hidden reference rectangles for any runtime colour logic (meta expressions, programmatic styling). Do not rely on a `.4DForm`-only scan to find these: `grep -rn "rowFillSource\|rowStrokeSource\|rowStyleSource"` across all forms, then `grep -rn` each referenced array/variable name across all `.4dm` files to find every assignment site (there is often more than one, e.g. load-time init plus a refresh/selection-change handler) and confirm none hardcode theme-specific RGB/hex.
+9. **Create** `styleSheets.css` if it doesn't exist; define both `light` and `dark` media query blocks.
+10. **Verify** no inline `.4DForm` property is overriding your CSS (specificity rule).
+11. **Test** by toggling system appearance in System Preferences / Settings.
 
 ---
 
