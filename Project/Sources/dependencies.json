@@ -1,16 +1,16 @@
 {
 	"version": 2130,
 	"dependencies": {
-		"4D NetKit": {
-			"github": "4d/4D-NetKit",
-			"version": "4d"
-		},
 		"4D ViewPro": {
 			"github": "4d/4D-ViewPro",
 			"version": "4d"
 		},
 		"DateTime 4D": {
 			"github": "miyako/DateTime-4D",
+			"version": "latest"
+		},
+		"KM NetKit": {
+			"github": "miyako/KM-NetKit",
 			"version": "latest"
 		}
 	}

@@ -11,5 +11,6 @@ project/DerivedData/*
 logs/*
 
 AIProviders.json
-Credentials/
+# OAuth tokens (the client ID in Credentials/Microsoft is public)
+Credentials/*.token
 

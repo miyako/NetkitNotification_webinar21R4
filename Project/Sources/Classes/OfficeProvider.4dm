@@ -5,6 +5,8 @@ property OAuth2 : cs:C1710.NetKit.OAuth2Provider
 property emailAddress:=""
 
 property credentialsFile : 4D:C1709.File
+// Tokens are kept in a separate, git-ignored file so the client ID file can be shared.
+property tokenFile : 4D:C1709.File
 
 property token : Object
 
@@ -15,12 +17,17 @@ singleton Class constructor()
 	$file:=File:C1566("/PACKAGE/Credentials/Microsoft")
 	
 	This:C1470.credentialsFile:=$file
+	This:C1470.tokenFile:=File:C1566("/PACKAGE/Credentials/Microsoft.token")
 	
-	var $myCredentials : Object
+	var $myCredentials : Object:={}
 	If ($file.exists)
 		$myCredentials:=JSON Parse:C1218($file.getText())
-		If (Value type:C1509($myCredentials.token)=Is object:K8:27) && (Not:C34(OB Is empty:C1297($myCredentials.token)))
-			This:C1470.token:=$myCredentials.token
+	End if 
+	
+	If (This:C1470.tokenFile.exists)
+		var $token : Object:=JSON Parse:C1218(This:C1470.tokenFile.getText())
+		If ($token#Null:C1517) && (Not:C34(OB Is empty:C1297($token)))
+			This:C1470.token:=$token
 		End if 
 	End if 
 	
@@ -73,15 +80,7 @@ Function saveToken($token : Object)
 	
 	This:C1470.token:=$token
 	
-	var $file : 4D:C1709.File
-	$file:=This:C1470.credentialsFile
-	
-	var $myCredentials : Object
-	If ($file.exists)
-		$myCredentials:=JSON Parse:C1218($file.getText())
-		$myCredentials.token:=This:C1470.token
-		$file.setText(JSON Stringify:C1217($myCredentials; *))
-	End if 
+	This:C1470.tokenFile.setText(JSON Stringify:C1217(This:C1470.token; *))
 	
 	// Requests an OAuth2 token and extracts the user's email address from the ID token payload.
 Function getToken() : Object
