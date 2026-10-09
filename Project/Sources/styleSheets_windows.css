@@ -19,3 +19,55 @@
 	font-weight: bold;
 }
 
+
+/* Windows 11 Fluent UI: text and surface colours from the Fluent design tokens. */
+@media (form-theme: fluent-ui) {
+	@media (prefers-color-scheme: light) {
+		.label {
+			stroke: #1B1B1B;
+		}
+
+		.field {
+			fill: #FBFBFB;
+			stroke: #1B1B1B;
+		}
+
+		.mail-list {
+			fill: #FFFFFF;
+			stroke: #1B1B1B;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.label {
+			stroke: #FFFFFF;
+		}
+
+		.field {
+			fill: #2D2D2D;
+			stroke: #FFFFFF;
+		}
+
+		.mail-list {
+			fill: #272727;
+			stroke: #FFFFFF;
+		}
+	}
+}
+
+/* Classic Windows rendering has no dark mode: always use the light palette. */
+@media (form-theme: win-classic) {
+	.label {
+		stroke: #000000;
+	}
+
+	.field {
+		fill: #FFFFFF;
+		stroke: #000000;
+	}
+
+	.mail-list {
+		fill: #FFFFFF;
+		stroke: #000000;
+	}
+}

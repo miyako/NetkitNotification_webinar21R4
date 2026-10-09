@@ -1,0 +1,35 @@
+/* Cross-platform colour scheme rules.
+   Platform themes override these in styleSheets_mac.css (liquid-glass, mac-classic)
+   and styleSheets_windows.css (fluent-ui, win-classic). */
+
+@media (prefers-color-scheme: light) {
+	.label {
+		stroke: #212121;
+	}
+
+	.field {
+		fill: #FFFFFF;
+		stroke: #212121;
+	}
+
+	.mail-list {
+		fill: #FFFFFF;
+		stroke: #212121;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.label {
+		stroke: #E0E0E0;
+	}
+
+	.field {
+		fill: #2A2A2A;
+		stroke: #E0E0E0;
+	}
+
+	.mail-list {
+		fill: #1E1E1E;
+		stroke: #E0E0E0;
+	}
+}

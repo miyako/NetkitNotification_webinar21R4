@@ -19,3 +19,38 @@
 	font-weight: bold;
 }
 
+
+/* macOS Tahoe Liquid Glass: align text and surfaces with the system label and content colours. */
+@media (form-theme: liquid-glass) {
+	@media (prefers-color-scheme: light) {
+		.label {
+			stroke: #262626;
+		}
+
+		.field {
+			fill: #FFFFFF;
+			stroke: #262626;
+		}
+
+		.mail-list {
+			fill: #FFFFFF;
+			stroke: #262626;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.label {
+			stroke: #DFDFDF;
+		}
+
+		.field {
+			fill: #1F1F1F;
+			stroke: #DFDFDF;
+		}
+
+		.mail-list {
+			fill: #1E1E1E;
+			stroke: #DFDFDF;
+		}
+	}
+}

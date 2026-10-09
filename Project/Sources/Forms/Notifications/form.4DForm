@@ -40,6 +40,7 @@
 					"width": 307,
 					"height": 17,
 					"dataSource": "Form:C1466.microsoftEmailAddress",
+					"class": "field",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
@@ -55,7 +56,8 @@
 					"width": 98,
 					"height": 16,
 					"text": "Email address:",
-					"textAlign": "right"
+					"textAlign": "right",
+					"class": "label"
 				},
 				"MIcrosoftConnectBt": {
 					"type": "button",
@@ -108,7 +110,7 @@
 					"selectedItemsSource": "Form:C1466.selectedEmails",
 					"rowHeight": "1em",
 					"headerHeight": "1em",
-					"alternateBackground": "#F9F9F9",
+					"class": "mail-list",
 					"hideFocusRing": true,
 					"hideExtraBlankRows": true,
 					"resizingMode": "legacy",
