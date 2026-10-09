@@ -196,12 +196,12 @@
 					],
 					"sizingX": "grow",
 					"sizingY": "grow",
-					"visibility": "hidden"
+					"visibility": "visible"
 				}
 			}
 		}
 	],
-	"geometryStamp": 158,
+	"geometryStamp": 159,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

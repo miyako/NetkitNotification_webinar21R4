@@ -9,7 +9,11 @@ property _calendarDisplay : Object
 Class constructor
 	This:C1470._calendarDisplay:=cs:C1710.CalendarDisplay.new(This:C1470._VPArea)
 	
-	VP IMPORT DOCUMENT(This:C1470._VPArea; This:C1470._FilePath; {formula: This:C1470.initCalendar})
+	CALL FORM:C1391(Current form window:C827; This:C1470.loadCalendar)
+	
+Function loadCalendar()
+	
+	VP IMPORT DOCUMENT(Form:C1466.calendar._VPArea; Form:C1466.calendar._FilePath; {formula: Form:C1466.calendar.initCalendar})
 	
 	// Displays the supplied events in the calendar.
 Function displayCalendar($events : Collection)
@@ -18,7 +22,4 @@ Function displayCalendar($events : Collection)
 	// Initializes the calendar grid and current-day indicators.
 Function initCalendar()
 	
-	var $this : cs:C1710.Form_Calendar
-	$this:=Form:C1466.calendar
-	
-	$this._calendarDisplay.initCalendar()
+	Form:C1466.calendar._calendarDisplay.initCalendar()
