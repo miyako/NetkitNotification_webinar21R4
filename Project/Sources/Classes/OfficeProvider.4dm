@@ -4,11 +4,25 @@ property OAuth2 : cs:C1710.NetKit.OAuth2Provider
 // Stores the authenticated user's email address.
 property emailAddress:=""
 
+property credentialsFile : 4D:C1709.File
+
+property token : Object
+
 // Initializes the Microsoft OAuth2 configuration.
-singleton Class constructor($token : Object)
+singleton Class constructor()
 	
-	// Retrieve stored credentials (e.g., from a datastore)
-	var $myCredentials : Object:=ds:C1482.Credentials.query("Name=:1"; "Microsoft")[0]
+	var $file : 4D:C1709.File
+	$file:=File:C1566("/PACKAGE/Credentials/Microsoft")
+	
+	This:C1470.credentialsFile:=$file
+	
+	var $myCredentials : Object
+	If ($file.exists)
+		$myCredentials:=JSON Parse:C1218($file.getText())
+		If (Value type:C1509($myCredentials.token)=Is object:K8:27) && (Not:C34(OB Is empty:C1297($myCredentials.token)))
+			This:C1470.token:=$myCredentials.token
+		End if 
+	End if 
 	
 	// Build the OAuth2 configuration object
 	// Object to hold OAuth2 credentials configuration
@@ -31,13 +45,43 @@ singleton Class constructor($token : Object)
 	// Timeout for the authentication process (in seconds)
 	$credential.timeout:=120
 	
-	If ($token#Null:C1517)
-		$credential.token:=$token
+	If (This:C1470.token#Null:C1517)
+		$credential.token:=This:C1470.token
 	End if 
 	
 	// Initialize the OAuth2 provider with the configuration
 	This:C1470.OAuth2:=cs:C1710.NetKit.OAuth2Provider.new($credential)
 	
+Function loadToken() : Object
+	
+	var $file : 4D:C1709.File
+	$file:=This:C1470.credentialsFile
+	
+	var $myCredentials : Object
+	If ($file.exists)
+		$myCredentials:=JSON Parse:C1218($file.getText())
+		
+	End if 
+	
+	return 
+	
+Function saveToken($token : Object)
+	
+	If ($token=Null:C1517) || (OB Is empty:C1297($token))
+		return 
+	End if 
+	
+	This:C1470.token:=$token
+	
+	var $file : 4D:C1709.File
+	$file:=This:C1470.credentialsFile
+	
+	var $myCredentials : Object
+	If ($file.exists)
+		$myCredentials:=JSON Parse:C1218($file.getText())
+		$myCredentials.token:=This:C1470.token
+		$file.setText(JSON Stringify:C1217($myCredentials; *))
+	End if 
 	
 	// Requests an OAuth2 token and extracts the user's email address from the ID token payload.
 Function getToken() : Object
@@ -59,10 +103,10 @@ Function getToken() : Object
 	// Return the full token object
 	return $token
 	
-// Retrieves Outlook categories and assigns display colors to them.
+	// Retrieves Outlook categories and assigns display colors to them.
 	// Algorithm: Fetches category list from Office365, maps each preset color code to RGB hex values.
 	// Returns enriched collection with backgroundColor and textColor properties added to each category.
-	Function categoryColor() : Collection
+Function categoryColor() : Collection
 	
 	// Fetch all available Outlook categories for the authenticated user
 	var $categories:=cs:C1710.NetKit.Office365.new(This:C1470.OAuth2).category.list().categories

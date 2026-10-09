@@ -3,16 +3,17 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"windowSizingX": "variable",
-	"windowSizingY": "variable",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
 	"windowMinWidth": 0,
 	"windowMinHeight": 0,
 	"windowMaxWidth": 32767,
 	"windowMaxHeight": 32767,
-	"rightMargin": 20,
-	"bottomMargin": 20,
+	"rightMargin": 10,
+	"bottomMargin": 10,
 	"events": [
-		"onLoad"
+		"onLoad",
+		"onUnload"
 	],
 	"windowTitle": "Notifications",
 	"destination": "detailScreen",
@@ -22,11 +23,11 @@
 				"Tab Control": {
 					"type": "tab",
 					"text": "Tab control",
-					"top": 1,
-					"left": 7,
-					"width": 1116,
-					"height": 714,
-					"dataSource": "_TabTitles",
+					"top": 10,
+					"left": 10,
+					"width": 920,
+					"height": 510,
+					"dataSource": "Form:C1466.titles",
 					"dataSourceTypeHint": "object",
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -35,9 +36,9 @@
 				"Variable2": {
 					"type": "input",
 					"top": 58,
-					"left": 112,
+					"left": 130,
 					"width": 307,
-					"height": 16,
+					"height": 17,
 					"dataSource": "Form:C1466.microsoftEmailAddress",
 					"dragging": "none",
 					"dropping": "custom",
@@ -50,66 +51,72 @@
 				"Texte3": {
 					"type": "text",
 					"top": 59,
-					"left": 21,
-					"width": 138,
-					"height": 15,
-					"text": "Email address:"
+					"left": 22,
+					"width": 98,
+					"height": 16,
+					"text": "Email address:",
+					"textAlign": "right"
+				},
+				"MIcrosoftConnectBt": {
+					"type": "button",
+					"text": "Sign In",
+					"top": 39,
+					"left": 690,
+					"width": 110,
+					"height": 54,
+					"events": [
+						"onClick"
+					],
+					"style": "regular",
+					"icon": "/RESOURCES/Microsoft.png",
+					"textPlacement": "bottom",
+					"imageHugsTitle": true,
+					"method": "ObjectMethods/MIcrosoftConnectBt.4dm",
+					"sizingX": "move"
+				},
+				"MIcrosoftInboxBt": {
+					"type": "button",
+					"text": "live.com",
+					"top": 39,
+					"left": 810,
+					"width": 110,
+					"height": 54,
+					"events": [
+						"onClick"
+					],
+					"style": "regular",
+					"icon": "/RESOURCES/Microsoft.png",
+					"textPlacement": "bottom",
+					"imageHugsTitle": true,
+					"method": "ObjectMethods/MIcrosoftInboxBt.4dm",
+					"sizingX": "move"
 				}
 			}
 		},
 		{
 			"objects": {
-				"MIcrosoftConnectBt": {
-					"type": "button",
-					"text": "Sign in   ",
-					"top": 51,
-					"left": 981,
-					"width": 109,
-					"height": 33,
-					"events": [
-						"onClick"
-					],
-					"method": "ObjectMethods/MIcrosoftConnectBt.4dm",
-					"style": "custom",
-					"fontWeight": "bold",
-					"fontSize": 14,
-					"stroke": "#5E5E5E",
-					"borderStyle": "solid",
-					"textAlign": "right",
-					"imageHugsTitle": false,
-					"customBorderX": 5
-				},
-				"Static Picture1": {
-					"type": "picture",
-					"top": 54,
-					"left": 988,
-					"width": 28,
-					"height": 26,
-					"picture": "/RESOURCES/Microsoft.png"
-				},
 				"EmailsListbox": {
 					"type": "listbox",
-					"left": 14,
-					"top": 113,
-					"width": 1076,
-					"height": 577,
-					"events": [
-						"onClick",
-						"onHeaderClick",
-						"onDataChange",
-						"onSelectionChange"
-					],
+					"left": 20,
+					"top": 100,
+					"width": 900,
+					"height": 400,
+					"events": [],
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.emails",
 					"currentItemSource": "Form:C1466.currentEmail",
 					"selectedItemsSource": "Form:C1466.selectedEmails",
-					"rowHeight": "36px",
-					"headerHeight": "32px",
+					"rowHeight": "1em",
+					"headerHeight": "1em",
 					"alternateBackground": "#F9F9F9",
 					"hideFocusRing": true,
 					"hideExtraBlankRows": true,
 					"resizingMode": "legacy",
 					"verticalAlign": "middle",
+					"alternateFill": "automaticAlternate",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"staticColumnCount": 4,
 					"columns": [
 						{
 							"header": {
@@ -123,7 +130,8 @@
 							"footer": {
 								"name": "Footer1"
 							},
-							"dataSourceTypeHint": "text"
+							"dataSourceTypeHint": "text",
+							"enterable": false
 						},
 						{
 							"header": {
@@ -136,7 +144,8 @@
 							"truncateMode": "withEllipsis",
 							"footer": {
 								"name": "Footer2"
-							}
+							},
+							"enterable": false
 						},
 						{
 							"header": {
@@ -145,11 +154,12 @@
 							},
 							"name": "ColSubject",
 							"dataSource": "This:C1470.subject",
-							"width": 598,
+							"width": 320,
 							"truncateMode": "withEllipsis",
 							"footer": {
 								"name": "Footer3"
-							}
+							},
+							"enterable": false
 						},
 						{
 							"header": {
@@ -159,10 +169,11 @@
 							"name": "ColDate",
 							"dataSource": "This:C1470.sentDateTime",
 							"dataSourceTypeHint": "date",
-							"width": 100,
+							"width": 40,
 							"footer": {
 								"name": "Footer4"
-							}
+							},
+							"enterable": false
 						}
 					]
 				}
@@ -172,22 +183,25 @@
 			"objects": {
 				"ViewProArea": {
 					"type": "view",
-					"left": 21,
-					"top": 106,
-					"width": 1080,
-					"height": 555,
+					"left": 20,
+					"top": 100,
+					"width": 900,
+					"height": 400,
 					"userInterface": "none",
 					"withFormulaBar": false,
 					"method": "ObjectMethods/ViewProArea.4dm",
 					"events": [
 						"onVPReady",
 						"onDoubleClick"
-					]
+					],
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"visibility": "visible"
 				}
 			}
 		}
 	],
-	"geometryStamp": 62,
+	"geometryStamp": 188,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

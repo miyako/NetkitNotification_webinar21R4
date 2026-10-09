@@ -9,7 +9,7 @@ Class constructor($office365 : cs:C1710.NetKit.Office365)
 	
 	// Adds newly received mail items to the form collection.
 	// Algorithm: Fetches mail metadata from Office365 API and appends to form collection with green highlight.
-	Function onCreate($provider : Object; $event : Object)
+Function onCreate($provider : Object; $event : Object)
 	var $item : Object
 	var $id : Text
 	
@@ -18,14 +18,14 @@ Class constructor($office365 : cs:C1710.NetKit.Office365)
 		// Request full mail item details from Office365
 		$item:=This:C1470.office365.mail.getMail($id)
 		
-		// Append new mail to form collection with metadata and new-mail indicator
-		Form:C1466.emails.push({type: $event.type; sender: $item.sender; subject: $item.subject; id: String:C10($id); sentDateTime: $item.sentDateTime; rowColor: "Green"})
+		// Prepend new mail to form collection with metadata and new-mail indicator
+		Form:C1466.emails.unshift({type: $event.type; sender: $item.sender; subject: $item.subject; id: String:C10($id); sentDateTime: $item.sentDateTime; rowColor: "Green"})
 		
 	End for each 
 	
 	// Removes deleted mail items from the form collection.
 	// Algorithm: Uses collection query to find matching email by ID, then removes from display list.
-	Function onDelete($provider : Object; $event : Object)
+Function onDelete($provider : Object; $event : Object)
 	var $indice : Collection
 	var $id : Text
 	
@@ -43,7 +43,7 @@ Class constructor($office365 : cs:C1710.NetKit.Office365)
 	
 	// Updates modified mail items in the form collection.
 	// Algorithm: Finds email in collection by ID, fetches updated metadata, replaces row with orange highlight.
-	Function onModify($provider : Object; $event : Object)
+Function onModify($provider : Object; $event : Object)
 	var $item : Object
 	var $indice : Collection
 	var $id : Text

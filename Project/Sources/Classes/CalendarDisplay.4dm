@@ -1,5 +1,5 @@
 // Name of the View Pro area used to render the calendar.
-property _VPArea:="ViewProArea"
+property _VPArea : Text
 // Time slots displayed by the calendar.
 property _timeSlot:=[]
 // Column corresponding to the current day.
@@ -82,12 +82,13 @@ Function removeEvent($name : Text)
 	$shape.remove($name)
 	
 	// Initializes the week header, highlights today, and displays the current time.
-Function initCalendar
-	var $VPArea:="ViewProArea"
+Function initCalendar($VPArea : Text)
+	
 	var $period:=WeekDate()
 	var $date:=Date:C102($period.start)
 	
-	var $data:={sunday: Day of:C23($date)}
+	var $data : Object
+	$data:={sunday: Day of:C23($date)}
 	$data.monday:=Day of:C23($date+1)
 	$data.tuesday:=Day of:C23($date+2)
 	$data.wednesday:=Day of:C23($date+3)
@@ -95,12 +96,15 @@ Function initCalendar
 	$data.friday:=Day of:C23($date+5)
 	$data.saturday:=Day of:C23($date+6)
 	
-	VP SET DATA CONTEXT("ViewProArea"; $data)
-	
-	This:C1470._currentDayColumn:=Day number:C114(Current date:C33)
-	VP SET CELL STYLE(VP Cells(This:C1470._VPArea; This:C1470._currentDayColumn; 0; 1; (This:C1470._timeSlot.length+1)); {backColor: This:C1470._backColorCurrentDate; foreColor: This:C1470._foreColorCurrentDate})
-	
-	This:C1470.displayCurrentTime()
+	Try
+		VP SET DATA CONTEXT($VPArea; $data)
+		This:C1470._currentDayColumn:=Day number:C114(Current date:C33)
+		VP SET CELL STYLE(VP Cells(This:C1470._VPArea; This:C1470._currentDayColumn; 0; 1; (This:C1470._timeSlot.length+1)); {backColor: This:C1470._backColorCurrentDate; foreColor: This:C1470._foreColorCurrentDate})
+		
+		This:C1470.displayCurrentTime()
+	Catch
+		//fail on first run after restart!?
+	End try
 	
 	// Displays the current-time indicator on the calendar.
 Function displayCurrentTime
@@ -116,7 +120,7 @@ Function displayCurrentTime
 	// Algorithm: Binary search through 5-minute time slot intervals.
 	// Finds the slot where currentTime falls between _timeSlot[$i] and _timeSlot[$i+1],
 	// then offsets the result from the first calendar row index.
-	Function searchRow($currentTime : Time) : Integer
+Function searchRow($currentTime : Time) : Integer
 	
 	var $i : Integer
 	var $row:=This:C1470._firstCalendarRow
@@ -129,14 +133,14 @@ Function displayCurrentTime
 			$row+=$i
 			return $row
 		End if 
-		End for 
+	End for 
 	
 	// Default to first calendar row if time not found
 	
 	// Converts an Office 365 event into the format required by the calendar.
 	// Algorithm: Transforms raw event data by extracting dates/times and matching category colors.
 	// Builds display label with formatting: subject + times for timed events, subject-only for all-day.
-	Function _formatEvent($event : Object)
+Function _formatEvent($event : Object)
 	var $categories:=cs:C1710.OfficeProvider.me.categoryColor()
 	
 	// Extract date and time components from ISO datetime strings
