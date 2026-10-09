@@ -1,6 +1,5 @@
 ---
 description: "Rules for maintaining the '## Branches' and '## Copilot Token Usage' sections of README.md — consistent table formatting, dynamic content sourced only from real repo/session data, never fabricated numbers"
-applyTo: "**/README.md"
 ---
 
 # README Branches & Token Usage — Agent Rules

@@ -1,6 +1,5 @@
 ---
 description: "Rules for using CSS stylesheets in 4D projects — dark mode support, automatic color values, media queries, specificity, and runtime color detection"
-applyTo: "demo/**/*.css,demo/**/*.4DForm"
 ---
 
 # 4D CSS Stylesheets — Agent Instructions

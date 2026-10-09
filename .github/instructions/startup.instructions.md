@@ -1,6 +1,5 @@
 ---
 description: "Rules for modernising the startup dialog pattern in 4D HDI example projects, including form methods, object methods, and XLIFF localisation"
-applyTo: "demo/**/*.4dm,demo/**/*.4DForm,demo/**/*.xlf"
 ---
 
 # HDI Modernisation Instructions

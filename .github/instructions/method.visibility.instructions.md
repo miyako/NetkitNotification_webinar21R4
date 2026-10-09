@@ -1,6 +1,5 @@
 ---
 description: "Rules for managing 4D project method visibility and attributes — ensuring subroutines and form-dependent methods are excluded from the Run Method dialog"
-applyTo: "demo/**/Methods/*.4dm"
 ---
 
 # 4D Project Method Visibility & Attributes — Agent Rules

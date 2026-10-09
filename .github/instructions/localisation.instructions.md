@@ -1,6 +1,5 @@
 ---
 description: "XLIFF localisation rules for 4D projects — menus, forms, and method code"
-applyTo: "demo/**/*.4dm,demo/**/*.4DForm,demo/**/menus.json,demo/**/*.xlf"
 ---
 
 # 4D Project XLIFF Localisation — Agent Rules

@@ -1,6 +1,5 @@
 ---
 description: "Rules for auditing Copilot session history and writing model/mode selection guidance in project READMEs — assessing whether each session used an appropriately sized model and interaction mode"
-applyTo: "**/README.md"
 ---
 
 # Copilot Usage Guidance — Agent Rules

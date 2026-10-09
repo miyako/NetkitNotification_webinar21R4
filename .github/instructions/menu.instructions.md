@@ -1,6 +1,5 @@
 ---
 description: "Rules for replacing legacy menu method wrappers with 4D standard actions in menus.json — eliminating unnecessary project methods like m_Quit that wrap single built-in commands"
-applyTo: "demo/**/menus.json,demo/**/Methods/*.4dm"
 ---
 
 # 4D Menu Standard Actions — Agent Rules

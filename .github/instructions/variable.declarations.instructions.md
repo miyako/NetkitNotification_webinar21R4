@@ -1,6 +1,5 @@
 ---
 description: "Rules for migrating deprecated C_* variable declarations to modern var/#DECLARE syntax in 4D projects, including type mapping, return values, compiler methods, and common pitfalls"
-applyTo: "demo/**/*.4dm"
 ---
 
 # 4D Variable Declaration Modernisation — Agent Rules
