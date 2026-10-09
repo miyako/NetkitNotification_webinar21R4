@@ -70,7 +70,7 @@ Each branch represents a distinct modernisation effort, guided by a correspondin
 
 | Branch | Description | Instructions |
 |--------|-------------|--------------|
-| [`<branch-name>`](../../tree/<branch-name>) | <one-line description of the effort> | [<file>.instructions.md](.github/copilot/instructions/<file>.instructions.md) |
+| [`<branch-name>`](../../tree/<branch-name>) | <one-line description of the effort> | [<file>.instructions.md](.github/instructions/<file>.instructions.md) |
 ```
 
 Rules:
@@ -85,7 +85,7 @@ Rules:
 - If a branch's work is guided by more than one instruction file, list all of
   them as comma-separated links in the same cell.
 - Link format is fixed: `[`branch-name`](../../tree/branch-name)` for
-  branches, `[filename](.github/copilot/instructions/filename)` for
+  branches, `[filename](.github/instructions/filename)` for
   instructions.
 
 ---
