@@ -99,7 +99,7 @@ Function initCalendar($VPArea : Text)
 	var $dayNames:=[]
 	var $dayKey : Text
 	For each ($dayKey; ["Sunday"; "Monday"; "Tuesday"; "Wednesday"; "Thursday"; "Friday"; "Saturday"])
-		$dayNames.push(Localized string("Calendar_"+$dayKey))
+		$dayNames.push(Localized string:C991("Calendar_"+$dayKey))
 	End for each 
 	
 	Try
@@ -110,6 +110,7 @@ Function initCalendar($VPArea : Text)
 		
 		This:C1470.displayCurrentTime()
 	Catch
+		TRACE:C157
 		//fail on first run after restart!?
 	End try
 	
