@@ -109,9 +109,10 @@ Function initCalendar($VPArea : Text)
 		VP SET CELL STYLE(VP Cells(This:C1470._VPArea; This:C1470._currentDayColumn; 0; 1; (This:C1470._timeSlot.length+1)); {backColor: This:C1470._backColorCurrentDate; foreColor: This:C1470._foreColorCurrentDate})
 		
 		This:C1470.displayCurrentTime()
+		Form:C1466.titles:={values: [Localized string:C991("Notifications_TabMail"); Localized string:C991("Notifications_TabCalendar")]}
 	Catch
-		TRACE:C157
 		//fail on first run after restart!?
+		Form:C1466.titles:={values: [Localized string:C991("Notifications_TabMail")]}
 	End try
 	
 	// Displays the current-time indicator on the calendar.
